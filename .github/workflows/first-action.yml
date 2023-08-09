@@ -3,6 +3,7 @@ on: push
 jobs:
   first-job:
     runs-on: test-host
+    if: BUILD_STATUS.repository == 'true'
     steps:
       - name: Print greeting
         run: echo "Hello"
