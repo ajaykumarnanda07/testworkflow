@@ -6,6 +6,6 @@ jobs:
     if: ${{ vars.BUILD_STATUS == 'true' }}
     steps:
       - name: Print greeting
-        run: echo "Hello"
+        run: echo "Hello-hi"
       - name: Print goodbye
         run: echo "bye"
