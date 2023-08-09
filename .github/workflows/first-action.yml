@@ -3,7 +3,8 @@ on: push
 jobs:
   first-job:
     runs-on: test-host
-    if: ${{ vars.BUILD_STATUS == 'true' }}
+    if: ${{ vars.BUILD_STATUS == 'true' }}; else
+      echo "the build was skipped sorry condition did not meet"
     steps:
       - name: Print greeting
         run: echo "Hello-hi"
