@@ -1,6 +1,7 @@
 name: firstaction Workflow
 on: workflow_dispatch
 jobs:
+  if: env.BUILD_STATUS == 'true'
   first-job:
     runs-on: ubuntu-latest
     steps:
