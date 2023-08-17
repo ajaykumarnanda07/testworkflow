@@ -7,7 +7,7 @@ jobs:
     #if: ${{ secrets.BUILD_STATUS == 'true' }}
     steps:
           - name: Print greeting
-            run: echo {{ secrets.BUILD_STATUS }}
+            run: echo {{ vars.BUILD_STATUS }}
           - name: Print goodbye
             run: echo "bye"
           - name: Run Powershell script
