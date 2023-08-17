@@ -8,7 +8,7 @@ jobs:
       if: (BUILD_STATUS == $env:BUILD_STATUS)
     steps:
       - name: Print greeting
-        run: echo "Hello-hi"
+        run: echo "Hello-hi-hello"
       - name: Print goodbye
         run: echo "bye"
       - name: Run Powershell script
