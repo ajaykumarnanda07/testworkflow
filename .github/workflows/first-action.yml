@@ -7,7 +7,7 @@ jobs:
     if: ${{ vars.BUILD_STATUS1 == 'true' }}
     steps:
       - name: Print greeting
-        run: echo "Hello-hi-hello"
+        run: echo "Hello-hi"
       - name: Print goodbye
         run: echo "bye"
       - name: Run Powershell script
