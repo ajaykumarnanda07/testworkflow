@@ -10,7 +10,7 @@ jobs:
             run: |
               if: ${{ secrets.BUILD_STATUS == 'true' }}
           - name: Print greeting
-            run: echo "Hello-hi"
+            run: echo "Hello"
           - name: Print goodbye
             run: echo "bye"
           - name: Run Powershell script
