@@ -3,15 +3,15 @@ on: push
 jobs:
   first-job:
     runs-on: test-host
-    environment: development
+    environment: Development
     if: ${{ vars.BUILD_STATUS1 == 'true' }}
     steps:
-      - name: Print greeting
-        run: echo "Hello-hi"
-      - name: Print goodbye
-        run: echo "bye"
-      - name: Run Powershell script
-        shell: pwsh
-        run: |
-           $mysecretvalue = $env.GITHUB_NEXUS_USERNAME
-           Write-Host "My Secret username is $mysecretvalue"
+          - name: Print greeting
+            run: echo "Hello-hi"
+          - name: Print goodbye
+            run: echo "bye"
+          - name: Run Powershell script
+            shell: pwsh
+            run: |
+             $mysecretvalue = $env.GITHUB_NEXUS_USERNAME
+             Write-Host "My Secret username is $mysecretvalue"
