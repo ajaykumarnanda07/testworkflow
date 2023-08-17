@@ -4,8 +4,7 @@ jobs:
   first-job:
     runs-on: test-host
     env:
-      BUILD_STATUS: ${{ vars.BUILD_STATUS1 == 'true' }}
-      if: (BUILD_STATUS == $env:BUILD_STATUS)
+      if: ${{ vars.BUILD_STATUS1 == 'true' }}
     steps:
       - name: Print greeting
         run: echo "Hello-hi-hello"
