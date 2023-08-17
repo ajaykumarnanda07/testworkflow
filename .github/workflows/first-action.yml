@@ -3,7 +3,7 @@ on: push
 jobs:
   first-job:
     runs-on: test-host
-    if: ${{ env.BUILD_STATUS == 'true' }}
+    if: ${{ vars.BUILD_STATUS == 'true' }}
     steps:
       - name: Print greeting
         run: echo "Hello-hi"
