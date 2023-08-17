@@ -7,7 +7,8 @@ jobs:
     
     steps:
           - name: if condition
-            if: ${{ secrets.BUILD_STATUS == 'true' }}
+            run: |
+              if: ${{ secrets.BUILD_STATUS == 'true' }}
           - name: Print greeting
             run: echo "Hello-hi"
           - name: Print goodbye
