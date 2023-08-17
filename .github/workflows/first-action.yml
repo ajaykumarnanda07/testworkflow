@@ -4,11 +4,8 @@ jobs:
   first-job:
     runs-on: test-host
     environment: Development
-    
+    if: ${{ secrets.BUILD_STATUS == 'true' }}
     steps:
-          - name: if condition
-            run: |
-              if: ${{ secrets.BUILD_STATUS == 'true' }}
           - name: Print greeting
             run: echo "Hello"
           - name: Print goodbye
