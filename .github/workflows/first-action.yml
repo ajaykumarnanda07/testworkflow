@@ -4,10 +4,10 @@ jobs:
   first-job:
     runs-on: test-host
     environment: Development
-    if: ${{ secrets.BUILD_STATUS == 'true' }}
+    #if: ${{ secrets.BUILD_STATUS == 'true' }}
     steps:
           - name: Print greeting
-            run: echo "Hello"
+            run: echo {{ secrets.BUILD_STATUS }}
           - name: Print goodbye
             run: echo "bye"
           - name: Run Powershell script
