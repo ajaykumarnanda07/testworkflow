@@ -11,6 +11,5 @@ jobs:
         run: echo "bye"
       - name: Run Powershell script
         run: |
-
            $mysecretvalue = $env.GITHUB_NEXUS_USERNAME
            Write-Host "My Secret username is $mysecretvalue"
