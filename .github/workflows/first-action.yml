@@ -2,7 +2,7 @@ name: firstaction Workflow
 on: push
 jobs:
   first-job:
-    runs-on: test-host
+    runs-on: win-run
     environment: development
     #if: ${{ vars.BUILD_STATUS == 'true' }}
     steps:
@@ -11,10 +11,9 @@ jobs:
 
       - name: Read variables.env and Set Environment Variables
         run: |
-          Get-Content -Path .env.qa | ForEach-Object {
+            Get-Content -Path .env.qa | ForEach-Object {
             $name, $value = $_ -split '=', 2
-            [Environment]::SetEnvironmentVariable($name, $value, 'Machine')
-          }
+            [Environment]::SetEnvironmentVariable($name, $value, 'Machine') }
 
       - name: Print Environment Variable
         run: |
