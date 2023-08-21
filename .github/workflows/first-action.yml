@@ -10,10 +10,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Read variables.txt and Set Environment Variables
-        run: |
-          for /f "usebackq delims=" %%a in (variables.txt) do (
-            set %%a
-          )
+        run: |    
+            Get-Content variables.txt | ForEach-Object {
+            $name, $value = $_ -split '=', 2
+            $env:$name = $value }
 
       - name: Print BUILD_STATUS
         run: |
