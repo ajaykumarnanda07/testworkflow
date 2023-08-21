@@ -22,6 +22,8 @@ jobs:
             run: |
               $BUILD = $env:BUILD_STATUS
               echo $BUILD
+              if: ($BUILD == true)
+              echo "true is my color"
             env:
               BUILD: ${{ SECRETS.BUILD_STATUS }}
             
