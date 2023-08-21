@@ -3,7 +3,7 @@ on: push
 jobs:
   first-job:
     runs-on: test-host
-    environment: Development
+    environment: development
     #if: ${{ vars.BUILD_STATUS == 'true' }}
     steps:
           - name: Checkout code
