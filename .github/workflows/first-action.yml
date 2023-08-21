@@ -13,7 +13,7 @@ jobs:
         run: |
             Get-Content -Path .env.qa | ForEach-Object {
             $name, $value = $_ -split '=', 2
-            [Environment]::SetEnvironmentVariable($name, $value, 'Machine') }
+            [Environment]::SetEnvironmentVariable($name, $value, 'Process') }
 
       - name: Print Environment Variable
         run: |
