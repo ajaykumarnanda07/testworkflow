@@ -6,8 +6,8 @@ jobs:
     #environment: Development
     #if: ${{ secrets.BUILD_STATUS == 'true' }}
     steps:
-          - name: Print greeting
-            run: echo ${{ vars.BUILD_STATUS }}
+          - name: Checkout code
+            uses: actions/checkout@v2
           - name: READ ENV FILE
             run: |
               # Read the contents of .env file
