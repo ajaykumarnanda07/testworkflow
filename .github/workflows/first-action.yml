@@ -4,7 +4,7 @@ jobs:
   first-job:
     runs-on: test-host
     #environment: Development
-    if: ${{ vars.BUILD_STATUS == 'true' }}
+    #if: ${{ vars.BUILD_STATUS == 'true' }}
     steps:
           - name: Checkout code
             uses: actions/checkout@v2
@@ -20,4 +20,10 @@ jobs:
 
           - name: Print Environment Variables
             run: |
-              echo "BUILD_STATUS=$MY_VARIABLE" >> ${{ vars.BUILD_STATUS }}
+              echo "BUILD_STATUS=$MY_VARIABLE" >> $GITHUB_ENV
+          - name: test build
+            run: |
+              if: $ {{ env.BUILD_STATUS == true }}
+              echo "My name is ajay"
+          
+          
