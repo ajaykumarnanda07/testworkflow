@@ -20,10 +20,7 @@ jobs:
 
           - name: Print Environment Variables
             run: |
-              echo "BUILD_STATUS=$MY_VARIABLE" >> $GITHUB_ENV
-          - name: test build
-            run: |
-              if: $ {{ env.BUILD_STATUS == true }}
-              echo "My name is ajay"
+              echo "BUILD_STATUS: ${{ env.BUILD_STATUS }}"
+        
           
           
