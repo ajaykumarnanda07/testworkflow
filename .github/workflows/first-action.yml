@@ -8,16 +8,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
       - name: Read variables.txt and Set Environment Variables
-        run: |    
-            Get-Content variables.txt | ForEach-Object {
+        run: |
+          Get-Content variables.txt | ForEach-Object {
             $name, $value = $_ -split '=', 2
-            $env:$name = $value }
+            Set-Item -Path "env:$name" -Value $value
+          }
 
       - name: Print BUILD_STATUS
         run: |
-          echo BUILD_STATUS=%BUILD_STATUS%
+          echo BUILD_STATUS=$env:BUILD_STATUS
 
 
 
