@@ -10,8 +10,10 @@ jobs:
             run: echo ${{ vars.BUILD_STATUS }}
           - name: Print goodbye
             run: echo "bye"
-          - name: Run Powershell script
-            shell: pwsh
+          - name: Load Environment Variables from .env
+            run: powershell -File load-env.ps1
+
+          - name: Print Environment Variables
             run: |
-             $mysecretvalue = $env.GITHUB_NEXUS_USERNAME
-             Write-Host "My Secret username is $mysecretvalue"
+              echo "MY_VARIABLE=$env:MY_VARIABLE"
+              echo "ANOTHER_VARIABLE=$env:ANOTHER_VARIABLE"
