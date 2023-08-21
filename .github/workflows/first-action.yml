@@ -11,7 +11,7 @@ jobs:
           - name: Print goodbye
             run: echo "bye"
           - name: Load Environment Variables from .env
-            run: powershell -File load-env.ps1
+            run: pwsh -File load-env.ps1
 
           - name: Print Environment Variables
             run: |
