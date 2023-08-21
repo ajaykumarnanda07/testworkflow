@@ -15,7 +15,7 @@ jobs:
           Get-Content .env | ForEach-Object {
             $name, $value = $_ -split '=', 2
             Set-Item -Path "ENV:$name" -Value $value
-            Write-Host "Setting input $name=$value" >> $GITHUB_ENV
+            Write-Host "$name=$value" >> $GITHUB_ENV
           }          
           
       - name: Print BUILD_STATUS
