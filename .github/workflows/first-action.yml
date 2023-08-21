@@ -10,14 +10,25 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Read .env File and Set Inputs      
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: my-artifact
+
+      - name: Read Artifact Content
         run: |
-          Get-Content .env | ForEach-Object {
-            $name, $value = $_ -split '=', 2
-            Set-Item -Path "ENV:$name" -Value $value
-            Write-Host "$name=$value" >> $GITHUB_ENV
-          }          
-          
-      - name: Print BUILD_STATUS
+          # Read the content of the artifact file
+          $artifactContent = Get-Content my-artifact/variables.txt
+
+          # Extract the BUILD_STATUS value
+          $BUILD_STATUS = ($artifactContent -match 'BUILD_STATUS=(.*)')[1]
+
+          Write-Host "BUILD_STATUS from artifact: $BUILD_STATUS"
+
+      - name: Use BUILD_STATUS in an If Condition
         run: |
-          echo "value of the variable: $env:BUILD_STATUS"
+          if ($BUILD_STATUS -eq "true") {
+            Write-Host "BUILD_STATUS is true"
+          } else {
+            Write-Host "BUILD_STATUS is false"
+          }
