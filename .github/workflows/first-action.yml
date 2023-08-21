@@ -10,20 +10,15 @@ jobs:
         uses: actions/checkout@v2
       - name: get content  
         run: |
-          $envs = @{}
-          Get-Content .env | ForEach-Object {
+         Get-Content .env | ForEach-Object {
             $name, $value = $_ -split '=', 2
-            $envs[$name] = $value
+            $env:$name = $value
             Write-Host "Setting input $name=$value"
           }
-          $envs | ConvertTo-Json | Set-Content envs.json
-          echo "::set-output name=envs-path::envs.json"
 
       - name: Print BUILD_STATUS
         run: |
-          $envsPath = "${{ steps.export-vars.outputs.envs-path }}"
-          $envs = Get-Content $envsPath | ConvertFrom-Json
-          Write-Host "BUILD_STATUS=$($envs.BUILD_STATUS)"
+          Write-Host "BUILD_STATUS=$($env:BUILD_STATUS)"
 
       - name: Use BUILD_STATUS in If Condition
         run: |
