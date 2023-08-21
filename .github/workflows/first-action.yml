@@ -9,17 +9,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Read variables.env and Set Environment Variables
+      - name: Read variables.txt and Set Environment Variables
         run: |
-            Get-Content -Path .env.qa | ForEach-Object {
-            $name, $value = $_ -split '=', 2
-            [Environment]::SetEnvironmentVariable($name, $value, 'Process') }
+          for /f "usebackq delims=" %%a in (variables.txt) do (
+            set %%a
+          )
 
-      - name: Print All Environment Variables
+      - name: Print BUILD_STATUS
         run: |
-          Get-ChildItem Env: | Sort-Object Name | ForEach-Object {
-          Write-Host "$($.Name) = $($.Value)"
+          echo BUILD_STATUS=%BUILD_STATUS%
+
+
+
+      - name: Use BUILD_STATUS in If Condition (PowerShell)
+        run: |
+          if ($env:BUILD_STATUS -eq "true") {
+            Write-Host "BUILD_STATUS is true. Do something here..."
+          } else {
+            Write-Host "BUILD_STATUS is not true. Do something else..."
           }
+
         
           
           
