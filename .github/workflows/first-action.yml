@@ -6,8 +6,6 @@ on:
         required: true
         type: string
 jobs:
-  on: 
-    push
   first-job:
     runs-on: win-run
     env:
