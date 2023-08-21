@@ -1,6 +1,6 @@
 name: firstaction Workflow
 on: 
-  workflow_call:
+  push:
     inputs:
         BUILD_STATUS:
         required: true
