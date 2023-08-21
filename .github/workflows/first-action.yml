@@ -17,7 +17,7 @@ jobs:
 
       - name: Print Environment Variable
         run: |
-          echo "BUILD_STATUS=$env:BUILD_STATUS"
+          Write-Host "BUILD_STATUS=$env:BUILD_STATUS"
         
           
           
