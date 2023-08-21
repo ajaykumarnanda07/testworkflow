@@ -20,7 +20,15 @@ jobs:
 
           - name: Print Environment Variables
             run: |
-              echo "BUILD_STATUS: ${{ env.BUILD_STATUS }}"
+              $BUILD = $env:BUILD_STATUS
+              if: ($BUILD == true )
+              echo "goyyale sekar is my dogs name"
+              else
+              echo "what doga"
+              fi
+            env:
+              BUILD: ${{ SECRETS.BUILD_STATUS }}
+            
         
           
           
