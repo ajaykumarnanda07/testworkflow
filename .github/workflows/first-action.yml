@@ -23,7 +23,7 @@ jobs:
       - name: Read Artifact Content
         run: |
           # Read the content of the artifact file
-          $artifactContent = Get-Content my-artifact/variables.txt
+          $artifactContent = Get-Content variables.txt
 
           # Extract the BUILD_STATUS value
           $BUILD_STATUS = ($artifactContent -match 'BUILD_STATUS=(.*)')[1]
