@@ -9,11 +9,16 @@ jobs:
           - name: Print greeting
             run: echo ${{ vars.BUILD_STATUS }}
           - name: Print goodbye
-            run: echo "bye"
-          - name: Load Environment Variables from .env
-            run: pwsh -File load-env.ps1
+            run: |
+              # Read the contents of .env file
+              envContents=$(cat .env)
+
+              # Parse the contents and set environment variables
+              while IFS= read -r line; do
+              export "$line"
+              done <<< "$envContents"
 
           - name: Print Environment Variables
             run: |
-              echo "MY_VARIABLE=$env:MY_VARIABLE"
-              echo "ANOTHER_VARIABLE=$env:ANOTHER_VARIABLE"
+              echo "MY_VARIABLE=$MY_VARIABLE"
+              echo "ANOTHER_VARIABLE=$ANOTHER_VARIABLE"
