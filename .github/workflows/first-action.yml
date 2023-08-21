@@ -8,23 +8,20 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: get content  
+      - name: Read .env File and Set Inputs      
         run: |
-         Get-Content .env | ForEach-Object {
+        
+          Get-Content .env | ForEach-Object {
             $name, $value = $_ -split '=', 2
-            $env:$name = $value
+            Set-Item -Path "ENV:$name" -Value $value
             Write-Host "Setting input $name=$value"
           }
-
       - name: Print BUILD_STATUS
         run: |
-          Write-Host "BUILD_STATUS=$($env:BUILD_STATUS)"
-
+          echo "BUILD_STATUS=$env:BUILD_STATUS"
       - name: Use BUILD_STATUS in If Condition
         run: |
-          $envsPath = "${{ steps.export-vars.outputs.envs-path }}"
-          $envs = Get-Content $envsPath | ConvertFrom-Json
-          if ($envs.BUILD_STATUS -eq "true") {
+          if ($env:BUILD_STATUS -eq "true") {
             echo "BUILD_STATUS is true. Do something here..."
           } else {
             echo "BUILD_STATUS is not true. Do something else..."
