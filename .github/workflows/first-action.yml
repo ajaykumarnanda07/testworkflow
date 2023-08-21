@@ -19,11 +19,13 @@ jobs:
 
       - name: Print BUILD_STATUS
         run: |
-          echo "BUILD_STATUS=$env:BUILD_STATUS"
+          $buildStatus = (Get-Item -Path "ENV:BUILD_STATUS").Value
+          echo "BUILD_STATUS=$buildStatus"
 
       - name: Use BUILD_STATUS in If Condition
         run: |
-          if ($env:BUILD_STATUS -eq "true") {
+          $buildStatus = (Get-Item -Path "ENV:BUILD_STATUS").Value
+          if ($buildStatus -eq "true") {
             echo "BUILD_STATUS is true. Do something here..."
           } else {
             echo "BUILD_STATUS is not true. Do something else..."
