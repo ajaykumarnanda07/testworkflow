@@ -8,7 +8,7 @@ jobs:
     steps:
           - name: Print greeting
             run: echo ${{ vars.BUILD_STATUS }}
-          - name: Print goodbye
+          - name: READ ENV FILE
             run: |
               # Read the contents of .env file
               envContents=$(cat .env)
