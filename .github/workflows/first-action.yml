@@ -20,7 +20,7 @@ jobs:
 
           - name: Print Environment Variables
             run: |
-              echo "BUILD_STATUS: ${{ env.BUILD_STATUS }}"
+              echo "BUILD_STATUS: ${{ vars.BUILD_STATUS }}"
         
           
           
