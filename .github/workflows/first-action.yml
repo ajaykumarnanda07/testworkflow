@@ -15,9 +15,11 @@ jobs:
             $name, $value = $_ -split '=', 2
             [Environment]::SetEnvironmentVariable($name, $value, 'Process') }
 
-      - name: Print Environment Variable
+      - name: Print All Environment Variables
         run: |
-          Write-Host "BUILD_STATUS=$env:BUILD_STATUS"
+          Get-ChildItem Env: | Sort-Object Name | ForEach-Object {
+          Write-Host "$($.Name) = $($.Value)"
+          }
         
           
           
