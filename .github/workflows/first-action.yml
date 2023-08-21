@@ -3,7 +3,7 @@ on: push
 jobs:
   first-job:
     runs-on: test-host
-    environment: Development
+    #environment: Development
     #if: ${{ secrets.BUILD_STATUS == 'true' }}
     steps:
           - name: Print greeting
@@ -11,7 +11,7 @@ jobs:
           - name: READ ENV FILE
             run: |
               # Read the contents of .env file
-              envContents=$(cat .env)
+              envContents=$(cat qa.env)
 
               # Parse the contents and set environment variables
               while IFS= read -r line; do
