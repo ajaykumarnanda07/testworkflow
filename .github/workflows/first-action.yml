@@ -10,6 +10,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: variables.txt
       - name: Download Artifact
         uses: actions/download-artifact@v2
         with:
