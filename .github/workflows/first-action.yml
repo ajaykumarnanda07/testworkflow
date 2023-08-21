@@ -1,10 +1,6 @@
 name: firstaction Workflow
 on: 
-  push:
-    inputs:
-        BUILD_STATUS:
-        required: true
-        type: string
+  push
 jobs:
   first-job:
     runs-on: win-run
