@@ -6,30 +6,19 @@ jobs:
     environment: development
     #if: ${{ vars.BUILD_STATUS == 'true' }}
     steps:
-          - name: Checkout code
-            uses: actions/checkout@v2
-          - name: READ ENV FILE
-            run: |
-              # Read the contents of .env file
-              envContents=$(cat .env.qa)
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-              # Parse the contents and set environment variables
-              while IFS= read -r line; do
-              export "$line"
-              done <<< "$envContents"
+      - name: Read variables.env and Set Environment Variables
+        run: |
+          Get-Content -Path .env.qa | ForEach-Object {
+            $name, $value = $_ -split '=', 2
+            [Environment]::SetEnvironmentVariable($name, $value, 'Machine')
+          }
 
-          - name: Print Environment Variables
-            run: |
-              $BUILD = $env:BUILD_STATUS
-              echo $BUILD
-              if: [ "${{env:BUILD_STATUS}}" == "true" ]; then
-                echo "true is my color"
-              else
-                echo "enna solla"
-              fi
-            env:
-              BUILD: ${{ SECRETS.BUILD_STATUS }}
-            
+      - name: Print Environment Variable
+        run: |
+          echo "BUILD_STATUS=$env:BUILD_STATUS"
         
           
           
