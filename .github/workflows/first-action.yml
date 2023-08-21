@@ -11,7 +11,7 @@ jobs:
           - name: READ ENV FILE
             run: |
               # Read the contents of .env file
-              envContents=$(cat qa.env)
+              envContents=$(cat .env.qa)
 
               # Parse the contents and set environment variables
               while IFS= read -r line; do
