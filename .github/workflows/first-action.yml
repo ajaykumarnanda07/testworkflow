@@ -20,4 +20,4 @@ jobs:
           
       - name: Print BUILD_STATUS
         run: |
-          echo "value of the variable: $env:MY_VARIABLE"
+          echo "value of the variable: $env:BUILD_STATUS"
