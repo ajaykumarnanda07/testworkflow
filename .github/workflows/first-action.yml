@@ -12,7 +12,7 @@ jobs:
         uses: xom9ikk/dotenv@v2.2.0
         with:
             mode: test
-            path: env_variable/
+            path: ./env_variable/env.test
 
       - name: Read Artifact Content
         run: |
