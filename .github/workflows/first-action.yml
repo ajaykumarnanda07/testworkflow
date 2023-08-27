@@ -21,7 +21,7 @@ jobs:
 
       - name: Use BUILD_STATUS in an If Condition
         run: |
-          if "%DEPLOY_STATUS%" == "true" {
+          if [ ${{ env.DEPLOY_STATUS }} == "true" ] {
             Write-Host "BUILD_STATUS is true"
           } else {
             Write-Host "DEPLOY_STATUS is false"
