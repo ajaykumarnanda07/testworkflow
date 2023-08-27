@@ -24,7 +24,7 @@ jobs:
           deployment: ${{ env.DEPLOY_STATUS }}
         run: |
           $dep = ${{ env.deployment }}
-          if ( $dep = "true" ) {
+          if ( $dep -eq "true" ) {
             Write-Host "BUILD_STATUS is true"
           } else {
             Write-Host "DEPLOY_STATUS is false"
