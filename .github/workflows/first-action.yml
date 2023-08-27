@@ -16,13 +16,8 @@ jobs:
 
       - name: Read Artifact Content
         run: |
-          # Read the content of the artifact file
-          $artifactContent = Get-Content variables.txt
-
-          # Extract the BUILD_STATUS value
-          $BUILD_STATUS = ($artifactContent -match 'BUILD_STATUS=(.*)')[1]
-
-          Write-Host "BUILD_STATUS from artifact: $BUILD_STATUS"
+          echo  "DEPLOY_STATUS from env file: ${{ env.DEPLOY_STATUS }}"
+          Write-Host "BUILD_STATUS from env file: ${{ env.BUILD_STATUS }}"
 
       - name: Use BUILD_STATUS in an If Condition
         run: |
