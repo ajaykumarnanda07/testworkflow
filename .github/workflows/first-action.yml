@@ -20,8 +20,7 @@ jobs:
           Write-Host "BUILD_STATUS from env file: ${{ env.BUILD_STATUS }}"
 
       - name: Use BUILD_STATUS in an If Condition
-        env:
-          deployment: ${{ env.DEPLOY_STATUS }}
+        
         run: |
           $dep = ${{ env.deployment }}
           if ($dep -eq "true") {
@@ -29,6 +28,8 @@ jobs:
           } else {
             Write-Host "DEPLOY_STATUS is false"
           }
-          
+
+        env:
+          deployment: ${{ env.DEPLOY_STATUS }}
 
          
