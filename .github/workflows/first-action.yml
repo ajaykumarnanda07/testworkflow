@@ -16,7 +16,7 @@ jobs:
             load-mode: strict
       - name: Read Artifact Content
         run: |
-          echo  "DEPLOY_STATUS from env file: ${{ env.DEPLOY_STATUS }}"
+          Write-Host  "DEPLOY_STATUS from env file: ${{ env.DEPLOY_STATUS }}"
           Write-Host "BUILD_STATUS from env file: ${{ env.BUILD_STATUS }}"
 
       - name: Use BUILD_STATUS in an If Condition
