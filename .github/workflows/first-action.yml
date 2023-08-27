@@ -23,7 +23,7 @@ jobs:
         
         run: |
           
-          if (${{ env.deployment }} -eq "true") {
+          if ("${{ env.deployment }}" -eq "true") {
             Write-Host "BUILD_STATUS is true"
           } else {
             Write-Host "DEPLOY_STATUS is false"
