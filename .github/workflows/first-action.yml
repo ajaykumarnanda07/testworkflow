@@ -12,6 +12,7 @@ jobs:
         uses: xom9ikk/dotenv@v2.2.0
         with:
             path: ./env_variable/
+            load: qa
             load-mode: strict
       - name: Read Artifact Content
         run: |
