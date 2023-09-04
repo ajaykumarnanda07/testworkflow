@@ -1,2 +1,3 @@
 BUILD_STATUS=true
 DEPLOY_STATUS=true
+MY_NAME=Ajay
